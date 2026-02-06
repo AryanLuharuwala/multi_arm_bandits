@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Building Management System</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>" />
+  <link rel="stylesheet" href="/src/styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Sidebar -->
+    <aside id="sidebar">
+      <div class="sidebar-header">
+        <h1>AR BMS</h1>
+        <span class="subtitle">Building Management</span>
+      </div>
+
+      <nav id="nav-tree"></nav>
+
+      <div class="sidebar-actions">
+        <button id="btn-upload-pc" class="btn btn-outline" title="Upload Point Cloud">
+          Upload Point Cloud
+        </button>
+        <button id="btn-load-colmap" class="btn btn-outline" title="Load COLMAP Data">
+          Load COLMAP
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main content area -->
+    <main id="main">
+      <!-- Top toolbar -->
+      <header id="toolbar">
+        <div id="breadcrumb">Dashboard</div>
+        <div id="toolbar-actions">
+          <button id="btn-view-3d" class="btn btn-sm active" data-view="3d">3D View</button>
+          <button id="btn-view-ar" class="btn btn-sm" data-view="ar">AR Mode</button>
+          <button id="btn-view-dashboard" class="btn btn-sm" data-view="dashboard">Dashboard</button>
+          <span class="separator"></span>
+          <button id="btn-place-sensor" class="btn btn-sm btn-accent">+ Sensor</button>
+          <button id="btn-place-object" class="btn btn-sm btn-accent">+ Object</button>
+        </div>
+      </header>
+
+      <!-- 3D viewport -->
+      <div id="viewport-container">
+        <canvas id="viewport"></canvas>
+        <!-- Info overlay -->
+        <div id="info-overlay" class="hidden">
+          <div id="info-overlay-content"></div>
+        </div>
+      </div>
+
+      <!-- Dashboard panels (shown when dashboard view active) -->
+      <div id="dashboard-container" class="hidden">
+        <div id="dashboard-grid">
+          <div class="dash-card" id="card-overview">
+            <h3>Building Overview</h3>
+            <div id="overview-content"></div>
+          </div>
+          <div class="dash-card" id="card-sensors">
+            <h3>Sensor Status</h3>
+            <div id="sensors-grid"></div>
+          </div>
+          <div class="dash-card" id="card-alerts">
+            <h3>Alerts</h3>
+            <div id="alerts-list"></div>
+          </div>
+          <div class="dash-card" id="card-floor-map">
+            <h3>Floor Map</h3>
+            <canvas id="floor-map-canvas"></canvas>
+          </div>
+          <div class="dash-card" id="card-colmap">
+            <h3>COLMAP Cameras</h3>
+            <div id="colmap-panel"></div>
+          </div>
+          <div class="dash-card" id="card-room-detail">
+            <h3>Room Detail</h3>
+            <div id="room-detail-panel"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Right panel for inspector -->
+    <aside id="inspector" class="hidden">
+      <div class="inspector-header">
+        <h3 id="inspector-title">Inspector</h3>
+        <button id="inspector-close" class="btn-icon">&times;</button>
+      </div>
+      <div id="inspector-body"></div>
+    </aside>
+  </div>
+
+  <!-- Placement modal -->
+  <div id="modal-overlay" class="hidden">
+    <div id="modal">
+      <div class="modal-header">
+        <h3 id="modal-title">Place Item</h3>
+        <button id="modal-close" class="btn-icon">&times;</button>
+      </div>
+      <div id="modal-body"></div>
+      <div class="modal-footer">
+        <button id="modal-cancel" class="btn btn-outline">Cancel</button>
+        <button id="modal-confirm" class="btn btn-accent">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
