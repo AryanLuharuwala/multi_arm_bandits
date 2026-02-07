@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Node
+node_modules/
+frontend/dist/
+
+# Data (user uploads – not tracked)
+data/point_clouds/*.ply
+data/point_clouds/*.pcd
+data/point_clouds/*.xyz
+data/store.json
+data/images/*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
